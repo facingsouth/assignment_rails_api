@@ -1,0 +1,31 @@
+<div>
+  <h3>Create a Review</h3>
+  <%= form_for @review, remote: true do |r| %>
+    <%= r.label :reviewer_name %>
+    <%= r.text_field :reviewer_name %>
+    <%= r.label :title %>
+    <%= r.text_field :title %>
+    <%= r.label :text %>
+    <%= r.text_field :text %>
+    <%= r.label :movie_id %>
+    <%= r.collection_select :movie_id, Movie.all, :id, :name %>
+    <br>
+    <%= r.submit id: "review-submit"%>
+  <% end %>
+</div>
+<hr>
+<div class="text-center">
+  <h3>Review JSON</h3>
+</div>
+<table class="table table-striped">
+  <thead>
+    <th>Movie Name</th>
+    <th>Reviewer Name</th>
+    <th>Title</th>
+    <th>Text</th>
+    <th>Review Date</th>
+    <th>Movie ID</th>
+  </thead>
+  <tbody id="review-list">
+  </tbody>
+</table>

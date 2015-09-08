@@ -12,15 +12,16 @@ var movieApp = {
     $.ajax({
       url: "movies",
       type: "POST",
-      data: { "movie[:name]": $('#movie_name').val() },
+      data: { "movie[name]": $('#movie_name').val() },
       dataType : "json",
-      success: function() { console.log("created a movie") }
+      success: function(movie) { movieApp.addMovie(movie) }
     })
   },
 
   stopDefAction: function(evt) {
     evt.preventDefault();
   },
+
   getMovieData: function(){
     $.ajax( {
 
@@ -42,6 +43,13 @@ var movieApp = {
           // alert( "The request is complete!" );
       }
     });
+  },
+
+  addMovie: function( new_movie ){
+    var $movie = $("<tr>");
+      $movie.append("<td>" + new_movie.name + "</td>");
+      $movie.append("<td>" + new_movie.release_date + "</td>");
+      $("#movie-list").append($movie)
   },
 
   addMovies: function( json ) {
