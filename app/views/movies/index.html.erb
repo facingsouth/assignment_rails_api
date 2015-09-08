@@ -2,7 +2,7 @@
   <h3>Create a Movie</h3>
   <%= form_for @movie do |movie_field| %>
     <%= movie_field.label :name %>
-    <%= movie_field.text_field :name %>
+    <%= movie_field.text_field :name, id:"movie_name" %>
     <br>
     <%= movie_field.submit id: "movie-submit"%>
   <% end %>

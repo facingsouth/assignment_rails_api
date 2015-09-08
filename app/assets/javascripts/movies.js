@@ -2,9 +2,21 @@ var movieApp = {
   eventListeners: function(){
     $('#movie-submit').on(
     'click', function(evt){
+      console.log("click");
       evt.preventDefault();
-    }, false
+      movieApp.createMovie();
+    }
   )},
+
+  createMovie: function() {
+    $.ajax({
+      url: "movies",
+      type: "POST",
+      data: { "movie[:name]": $('#movie_name').val() },
+      dataType : "json",
+      success: function() { console.log("created a movie") }
+    })
+  },
 
   stopDefAction: function(evt) {
     evt.preventDefault();
