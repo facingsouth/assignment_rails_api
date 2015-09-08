@@ -47,6 +47,10 @@ var movieApp = {
   },
 
   addMovies: function( json ) {
-
+    for ( var i=0; i<json.length; i++ ) {
+      var $movie = $("<tr>");
+      $movie.append("");
+      $("#movie-list").append(movie)
+    }
   }
 }

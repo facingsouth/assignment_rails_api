@@ -1,10 +1,11 @@
 class ReviewsController < ApplicationController
 
   def index
-
-    respond_to |format|
+    @reviews = Review.all
+    
+    respond_to do |format|
       format.html
-      format.json
+      format.json {render json: @reviews}
     end
   end
 end

@@ -1,16 +1,17 @@
 class MoviesController < ApplicationController
 
   def index
+    @movies = Movie.all
 
-    respond_to |format|
+    respond_to do |format|
       format.html
-      format.json
+      format.json { render json: @movies }
     end
   end
 
   def create
 
-    respond_to |format|
+    respond_to do |format|
       format.html
       format.json
     end
@@ -18,7 +19,7 @@ class MoviesController < ApplicationController
 
   def show
 
-    respond_to |format|
+    respond_to do |format|
       format.html
       format.json
     end
