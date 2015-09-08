@@ -9,9 +9,19 @@ class MoviesController < ApplicationController
   end
 
   def create
+
+    respond_to |format|
+      format.html
+      format.json
+    end
   end
 
   def show
+
+    respond_to |format|
+      format.html
+      format.json
+    end
   end
 
 end
