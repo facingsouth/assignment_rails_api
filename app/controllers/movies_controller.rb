@@ -11,15 +11,15 @@ class MoviesController < ApplicationController
   end
 
   def create
-    @movie = Movie.new(name: params[:name], release_date: Time.now.to_date)
-    sd
+    @movie = Movie.new(whitelisted_params)
+    @movie.release_date = Time.now.to_date
     respond_to do |format|
       if @movie.save
-        format.html { redirect_to movies_path, notice: 'Movie was successfully created.'}
-        format.json { render :index, status: :created, location: @movie }
+        format.html { redirect_to @movie, notice: 'Movie was successfully created.'}
+        format.json { redirect_to @movie }
       else
         format.html { render :new }
-        format.json { render json: @movie.errors, status: :unprocessable_entity }
+        format.json { head :none }
       end
     end
   end
@@ -31,6 +31,12 @@ class MoviesController < ApplicationController
       format.html
       format.json { render json: @movie }
     end
+  end
+
+  private
+
+  def whitelisted_params
+    params.require(:movie).permit(:name)
   end
 
 end
