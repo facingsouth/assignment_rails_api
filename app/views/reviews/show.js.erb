@@ -1,14 +1,7 @@
 var $review = $("<tr>");
-$review.append("<td>" + @review.movie.name + "</td>")
-$review.append("<td>" + @review.reviewer_name + "</td>")
-$review.append("<td>" + @review.title + "</td>")
-$review.append("<td>" + @review.text + "</td>")
-$review.append("<td>" + @review.review_date + "</td>")
-$review.append("</tr>")
-$("#review-list").append($review)
-
-
-
-
-
-
+$review.append("<td> <%= @review.movie.name %> </td>");
+$review.append("<td> <%= @review.reviewer_name %> </td>");
+$review.append("<td> <%= @review.title %> </td>");
+$review.append("<td> <%= @review.text %> </td>");
+$review.append("<td> <%= @review.review_date %> </td>");
+$("#review-list").prepend($review);

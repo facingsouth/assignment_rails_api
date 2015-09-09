@@ -29,7 +29,18 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.js {}
+      format.js
+    end
+  end
+
+  def destroy
+    @review = Review.find(params[:id])
+
+    respond_to do |format|
+      if @review.destroy
+        format.js { head :none }
+      else
+      end
     end
   end
 
